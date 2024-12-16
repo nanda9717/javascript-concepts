@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread Operator</title>
+    <style>
+        .code{
+            color: #0c4ecd;
+            font-size: large;
+            font-style: italic;
+        }
+        .pre-code{
+            background: #dfd5d5;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+        .pre-result{
+            background: #8fdf6f;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+        .result{
+            color: #0d880d;
+            font-size: large;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">Back</a>
+    <h2>Spread Operator and Rest Parameter</h2>
+    <p><strong>Rest Parameter - </strong>Collects a bunch of items and puts them in an array or an object</p>
+    <p><strong>Spread Operator - </strong>It allows an iterable to spread or expand individually</p>
+    <p><strong>Deconstructing - </strong>Deconstructing means taking out indivisual items from an object or array and storing them in variables.</p>
+    <pre class="pre-code">
+        <code class="code">
+            // Rest Operators
+            function sendCars(...ids){
+                console.log("Ids---", ids);
+            }
+
+            sendCars(100, 200, 300, 400);
+
+            // Spread Operator
+            function sendBikes(bike1, bike2, bike3){
+                console.log('Bikes ids are', bike1, bike2, bike3);
+            }
+
+            let allBikeIds = [11, 12, 13];
+
+            sendBikes(...allBikeIds);
+
+            let bike = { id: 120, model: 2019};
+            let newBike = bike;
+            let newBikeWithColor = {...bike, color: 'black'}
+            console.log("New Bike = ",newBike);
+            console.log("Added New Property in existing object",newBikeWithColor);
+
+            // Deconstructing
+            let carIds = [1,2,3];
+            let [car1, car2, car3] = carIds;
+            console.log("Deconstructed array elements : ", car1, car2, car3);
+
+            let car = { id: 120, model: 2019};
+            let {id, model} = car;
+            console.log("Deconstructed object", id, model);
+
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            Ids--- (4) [100, 200, 300, 400]
+            Bikes ids are 11 12 13
+            New Bike =  {id: 120, model: 2019}
+            Added New Property in existing object {id: 120, model: 2019, color: 'black'}
+            Deconstructed array elements :  1 2 3
+            Deconstructed object : 120 2019
+        </code>
+    </pre>
+</body>
+<script>
+    
+    // Rest Operators
+    function sendCars(...ids){
+        console.log("Ids---", ids);
+    }
+
+    sendCars(100, 200, 300, 400);
+
+    // Spread Operator
+    function sendBikes(bike1, bike2, bike3){
+        console.log('Bikes ids are', bike1, bike2, bike3);
+    }
+
+    let allBikeIds = [11, 12, 13];
+
+    sendBikes(...allBikeIds);
+
+    let bike = { id: 120, model: 2019};
+    let newBike = bike;
+    let newBikeWithColor = {...bike, color: 'black'}
+    console.log("New Bike = ",newBike);
+    console.log("Added New Property in existing object",newBikeWithColor);
+
+    // Deconstructing
+    let carIds = [1,2,3];
+    let [car1, car2, car3] = carIds;
+    console.log("Deconstructed array elements : ", car1, car2, car3);
+
+    let car = { id: 120, model: 2019};
+    let {id, model} = car;
+    console.log("Deconstructed object : ", id, model);
+
+</script>
+</html>

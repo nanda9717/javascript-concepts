@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web API</title>
+</head>
+<body>
+    <a href="/">Back</a>
+    <h1>Welcome to DOM</h1>
+    <p id="desc">Description</p>
+    <div class="content">
+        <h3>Data</h3>
+    </div>
+    <button onclick="handleClick()">Click Me</button>
+    <div style="border: 1px solid black;" onclick="divClick(event)">
+        <h1>Hello DOM</h1>
+        <button onclick="buttonClick(event)">Button</button>
+    </div>
+
+</body>
+<script>
+    console.log("DOM API...");
+
+    console.log(document);
+    console.log(document.getElementsByTagName('h1')?.[0]?.innerText);
+    console.log(document.getElementById("desc"));
+    console.log(document.getElementsByClassName("content")[0].innerHTML);
+
+    document.getElementById("desc").style.color = 'red';
+    document.getElementById("desc").setAttribute('class','test-class')
+    console.log(document.getElementById("desc").attributes[0].value);
+
+    let newElement = document.createElement('div');
+    newElement.innerText = "This is new";
+    newElement.setAttribute("id","new-id");
+    document.body.appendChild(newElement);
+
+
+    function handleClick(){
+        console.log("Button Clicked!!")
+    }
+
+    console.log("Length history : ",window.history.length);
+
+    function divClick(e){
+        console.log('Div : ',e.target)
+        console.log("Div Clicked")
+    }
+
+    function buttonClick(e){
+        console.log('Button : ',e.target)
+        console.log("Button Click")
+    }
+
+</script>
+</html>

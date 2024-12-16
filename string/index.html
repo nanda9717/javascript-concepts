@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+    <style>
+        .code{
+            color: #0c4ecd;
+            font-size: large;
+            font-style: italic;
+        }
+        .pre-code{
+            background: #dfd5d5;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+        .pre-result{
+            background: #8fdf6f;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+        .result{
+            color: #0d880d;
+            font-size: large;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">Back</a>
+    <h2>String and Its functions</h2>
+    <p>Access the properties of object by for loop</p>
+    <p><strong>length - </strong>Length is a read-only property that returns the length of the given string.</p>
+    <p><strong>indexOf() - </strong>Used for finding the index of a character or a string present inside the string variable</p>
+    <p><strong>charAt() - </strong>If the index is known and we want to find the character at that position it can be done using <i style="color: red; font-weight: 600;">charAt()</i>.</p>
+    <p><strong>split() - </strong>To split the string based on certain character we can use the <i style="color: red; font-weight: 600;">split()</i> method.<br/>
+        The <i style="color: red; font-weight: 600;">split()</i> method splits a string into an array of substrings.<br/>
+        Syntax - <b style="color: rgb(25, 37, 197);">string.split(separator, limit)</b>
+    </p>
+    <p>
+        <strong>substr() - </strong>To extract some characters from the existing string we can use the <i style="color: red; font-weight: 600;">substr()</i> method.<br/>
+        The substr() method extracts a part of a string.<br/>
+        Syntax - <b style="color: rgb(25, 37, 197);">string.substr(start, length)</b>
+    </p>
+    <p><strong>substring() - </strong> To extract characters from a string using the starting and ending index use the substring() method.<br/>
+        The substring() method extracts characters from start to end (exclusiv). (end index value = end-1)<br/>
+        Syntax :- <b style="color: rgb(25, 37, 197);">string.substring(start, end)</b>
+    </p>
+    <pre class="pre-code">
+        <code class="code">
+            let myString = "Aeroplane";
+            console.log("String Length is : "+myString.length);
+            console.log("Get first character of string", myString[0]);
+
+            let findIndex = myString.indexOf('plane');
+            let findIndexNew = myString.indexOf('water');
+            console.log('Index value : ', findIndex, findIndexNew);
+
+            let char = myString.charAt(6);
+            console.log("Character at 6 index : ",char);
+
+            let splitStr = myString.split('e');
+            console.log("Splitted array : ", splitStr, myString.split('e',2) , ("How are you doing today").split(" "));
+
+            let substrString = myString.substr(0,4);
+            console.log("Substr : ", substrString, myString.substr(3,5), myString.substr(2));
+
+            let substring = myString.substring(0,5);
+            console.log("Substring : ", substring, myString.substring(3,5), myString.substring(2));
+
+            let upperStr = myString.toUpperCase();
+            console.log("toUpperCase : ",upperStr);
+
+            let lowerStr = myString.toLowerCase();
+            console.log("toLowerCase : ", lowerStr);
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            String Length is : 9
+            Get first character of string A
+            Index value :  4 -1
+            Character at 6 index :  a
+            Splitted array :  (3) ['A', 'roplan', ''] (2) ['A', 'roplan'] (5) ['How', 'are', 'you', 'doing', 'today']
+            Substr :  Aero oplan roplane
+            Substring :  Aerop op roplane
+            toUpperCase :  AEROPLANE
+            toLowerCase :  aeroplane
+        </code>
+    </pre>
+    
+</body>
+<script>
+    
+    let myString = "Aeroplane";
+    console.log("String Length is : "+myString.length);
+    console.log("Get first character of string", myString[0]);
+
+    let findIndex = myString.indexOf('plane');
+    let findIndexNew = myString.indexOf('water');
+    console.log('Index value : ', findIndex, findIndexNew);
+
+    let char = myString.charAt(6);
+    console.log("Character at 6 index : ",char);
+
+    let splitStr = myString.split('e');
+    console.log("Splitted array : ", splitStr, myString.split('e',2) , ("How are you doing today").split(" "));
+
+    let substrString = myString.substr(0,4);
+    console.log("Substr : ", substrString, myString.substr(3,5), myString.substr(2));
+
+    let substring = myString.substring(0,5);
+    console.log("Substring : ", substring, myString.substring(3,5), myString.substring(2));
+
+    let upperStr = myString.toUpperCase();
+    console.log("toUpperCase : ",upperStr);
+
+    let lowerStr = myString.toLowerCase();
+    console.log("toLowerCase : ", lowerStr);
+
+
+</script>
+</html>

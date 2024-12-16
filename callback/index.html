@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback</title>
+    <style>
+        .code{
+            color: #0c4ecd;
+            font-size: large;
+            font-style: italic;
+        }
+        .pre-code{
+            background: #dfd5d5;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">Back</a>
+    <h2>Callback</h2>
+    <p>A <strong>callback</strong> is a function that will be executed after another function gets executed.</p>
+    <p>Functions that are used as an argument to another function are called callback functions.</p>
+    <p id="demo"></p>
+    <pre class="pre-code">
+        <code class="code">
+            function myDisplayer(something) {
+                document.getElementById("demo").innerHTML = something;
+            }
+        
+            function myCalculator(num1, num2, myCallback) {
+                let sum = num1 + num2;
+                myCallback(sum);
+            }
+        
+            myCalculator(5, 5, myDisplayer); // Output - 10
+        </code>
+    </pre>
+</body>
+<script>
+    function myDisplayer(something) {
+        document.getElementById("demo").innerHTML = something;
+    }
+
+    function myCalculator(num1, num2, myCallback) {
+        let sum = num1 + num2;
+        myCallback(sum);
+    }
+
+    myCalculator(5, 5, myDisplayer);
+</script>
+</html>

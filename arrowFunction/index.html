@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Function</title>
+    <style>
+        .code{
+            color: #0c4ecd;
+            font-size: large;
+            font-style: italic;
+        }
+        .pre-code{
+            background: #dfd5d5;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">Back</a>
+    <h3>Arrow Function</h3>
+    <p><strong>Arrow functions</strong> were introduced in the ES6 version of javascript. They provide us with a new and shorter syntax for declaring functions. Arrow functions can only be used as a function expression.</p>
+    <p>The biggest difference between the traditional function expression and the arrow function is the handling of <strong>this</strong> keyword.</p>
+    <p>In the arrow functions, there is no binding of this keyword. This keyword inside an arrow function does not refer to the object calling it. It rather inherits its value from the parent scope which is the window object in this case.</p>
+    <pre class="pre-code">
+        <code class="code">
+            // Traditional Function Expression
+            var add = function(a,b){
+            return a + b;
+            }
+
+            // Arrow Function Expression
+            var arrowAdd = (a,b) => a + b;
+        </code>
+    </pre>
+    <pre class="pre-code">
+        <code class="code">
+            // Traditional function expression
+            var multiplyBy2 = function(num){
+            return num * 2;
+            }
+            // Arrow function expression
+            var arrowMultiplyBy2 = num => num * 2;
+        </code>
+    </pre>
+</body>
+</html>

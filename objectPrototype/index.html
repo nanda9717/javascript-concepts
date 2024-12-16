@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function Person(first, last, age, address) {
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+            this.address = address;
+        }
+
+        Person.prototype.getName = function() {
+            return this.firstName + " " + this.lastName
+        };
+
+        Person.prototype.setName = function(firstName, lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+        };
+
+        let personObj = new Person('Nane','Singh',29,'Noida');
+        personObj.setName('John', 'Doe');
+        // console.log(personObj);
+        console.log(personObj.getName());
+    </script>
+    <style>
+        .code{
+            color: #0c4ecd;
+            font-size: large;
+            font-style: italic;
+        }
+        .pre-code{
+            background: #dfd5d5;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+    </style>
+    <title>Object Prototype</title>
+</head>
+<body>
+    <a href="/">Back</a>
+    <h3>Object Prototype</h3>
+    <p>
+        <strong>A prototype is a blueprint of an object. The prototype</strong> allows us to use properties and methods on an object even if the properties and methods do not exist on the current object.
+    </p>
+    <p>The JavaScript <strong>prototype</strong> property allows you to add new properties to object constructors:</p>
+    <h4>Example</h4>
+    <pre class="pre-code">
+        <code class="code">
+            function Person(first, last, age, address) {
+                this.firstName = first;
+                this.lastName = last;
+                this.age = age;
+                this.address = address;
+            }
+    
+            Person.prototype.nationality = "English";
+            let personObj = new Person('Nane','Singh',29,'Noida');
+            // console.log(personObj);
+            console.log(personObj.firstName, personObj.nationality); // Output - Nane English
+        </code>
+    </pre>
+    <p>The JavaScript <strong>prototype</strong> property also allows you to add new methods to objects constructors:</p>
+    <h4>Example</h4>
+    <pre class="pre-code">
+        <code class="code">
+            function Person(first, last, age, address) {
+                this.firstName = first;
+                this.lastName = last;
+                this.age = age;
+                this.address = address;
+            }
+    
+            Person.prototype.getName = function() {
+                return this.firstName + " " + this.lastName
+            };
+    
+            Person.prototype.setName = function(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+            };
+    
+            let personObj = new Person('Nane','Singh',29,'Noida');
+            personObj.setName('John', 'Doe');
+            // console.log(personObj);
+            console.log(personObj.getName()); // Output - John Doe
+        </code>
+    </pre>
+</body>
+</html>

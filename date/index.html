@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+    <style>
+        .code{
+            color: #0c4ecd;
+            font-size: large;
+            font-style: italic;
+        }
+        .pre-code{
+            background: #dfd5d5;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+        .pre-result{
+            background: #8fdf6f;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+        .result{
+            color: #0d880d;
+            font-size: large;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">Back</a>
+    <h2>Date Object and Its methods</h2>
+    <p>Date object created using new operator points to current system date and time stamp.</p>
+    <p>Same information can be printed in milliseconds using <i style="color: red; font-weight: 600;">getTime()</i> method.</p>
+    <p>Date usually contains month, year and date. These can be extracted using <i style="color: red; font-weight: 600;">getDate(), getMonth() and getFullYear()</i>.</p>
+    <p>To print the date object in the string format we can use <i style="color: red; font-weight: 600;">toLocaleString() and toLocaleDateString()</i>.<br/>
+        <b>toLocaleString()</b> - Prints both date and time stamp information in string format.<br/>
+        <b>toLocaleDateString()</b> - Prints only the date information in string format.    
+    </p>
+    <pre class="pre-code">
+        <code class="code">
+            let dateOne = new Date();
+            console.log("Date One : ", dateOne);
+        
+            console.log("In milliseconds", dateOne.getTime());
+        
+            console.log("Date : ", dateOne.getDate());
+            console.log("Month :", dateOne.getMonth());
+            console.log("Year : ", dateOne.getFullYear());
+        
+            dateOne.setFullYear(2050, 10, 7);
+            console.log("After setting date information : ", dateOne);
+        
+            let today = new Date();
+        
+            let dateDiff = ( dateOne - today ) / (1000*60*60*24);
+            console.log("Difference days : ", dateDiff);
+            console.log("Difference days (Actual days): ", Math.floor(dateDiff));
+        
+            console.log("Today date with time in string", today.toLocaleString());
+            console.log("Only date in string format", today.toLocaleDateString())
+        
+            let newDate = new Date('2025-04-24');
+            console.log("New Date : ", newDate)
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            Date One :  Thu Dec 12 2024 11:23:33 GMT+0530 (India Standard Time)
+            In milliseconds 1733982813380
+            Date :  12
+            Month : 11
+            Year :  2024
+            After setting date information :  Mon Nov 07 2050 11:23:33 GMT+0530 (India Standard Time)
+            Difference days :  9460.999999976852
+            Difference days (Actual days):  9460
+            Today date with time in string 12/12/2024, 11:23:33 AM
+            Only date in string format 12/12/2024
+            New Date :  Thu Apr 24 2025 05:30:00 GMT+0530 (India Standard Time)
+        </code>
+    </pre>
+    
+</body>
+<script>
+    
+    let dateOne = new Date();
+    console.log("Date One : ", dateOne);
+
+    console.log("In milliseconds", dateOne.getTime());
+
+    console.log("Date : ", dateOne.getDate());
+    console.log("Month :", dateOne.getMonth());
+    console.log("Year : ", dateOne.getFullYear());
+
+    dateOne.setFullYear(2050, 10, 7);
+    console.log("After setting date information : ", dateOne);
+
+    let today = new Date();
+
+    let dateDiff = ( dateOne - today ) / (1000*60*60*24);
+    console.log("Difference days : ", dateDiff);
+    console.log("Difference days (Actual days): ", Math.floor(dateDiff));
+
+    console.log("Today date with time in string", today.toLocaleString());
+    console.log("Only date in string format", today.toLocaleDateString())
+
+    let newDate = new Date('2025-04-24');
+    console.log("New Date : ", newDate)
+
+</script>
+</html>

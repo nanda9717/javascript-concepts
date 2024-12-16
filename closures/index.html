@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .code{
+            color: #0c4ecd;
+            font-size: large;
+            font-style: italic;
+        }
+        .pre-code{
+            background: #dfd5d5;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+    </style>
+    <script>
+        function init() {
+                var name = "Mozilla"; // name is a local variable created by init
+                function displayName() {
+                // displayName() is the inner function, that forms a closure
+                console.log(name); // use variable declared in the parent function
+                }
+                displayName();
+        }
+        init(); // "Mozilla"
+
+        function initNew() {
+                var name = "Mozilla"; // name is a local variable created by init
+                function displayName() {
+                // displayName() is the inner function, that forms a closure
+                console.log(name); // use variable declared in the parent function
+                }
+                name = "Nane"
+                displayName();
+        }
+        initNew(); // "Nane"
+        
+        // function sum(a){
+        //     let c = 5;
+        //     return function (b){
+        //         return a+b+c
+        //     }
+        // }
+
+        // let innerFn = sum(2);
+        // console.log(innerFn(8));
+
+        function sum(a,b,c){
+                return {
+                    sumTwoNo(){
+                        return a+b;
+                    },
+                    sumThreeNo(){
+                        return a+b+c;
+                    }
+                }
+        }
+
+        let inner = sum(1,2,3);
+        console.log(inner.sumTwoNo());
+        console.log(inner.sumThreeNo());
+    </script>
+    <title>Javascript Concepts : Closures</title>
+</head>
+<body>
+    <a href="/">Back</a>
+    <h3>Closures</h3>
+    <h4>A function with lexical scope is called closure.</h4>
+    <p>
+        A <b>closure</b> is the combination of a function bundled together (enclosed) with references to its surrounding state <b>(the lexical environment)</b>. 
+        In other words, a closure gives a function access to its outer scope. In JavaScript, closures are created every time a function is created, 
+        at function creation time.
+    </p>
+    <p>
+        <b>Lexical scope</b>, also known as static scoping, is a convention in JavaScript that defines how variables and functions interact based on where they are declared in the code
+    </p>
+    <p>
+        A <strong>closure</strong> is a result of lexical scoping, where a function can access its lexical scope even when it's executing outside of it. This allows an inner function to access the scope of an outer function. 
+    </p>
+    <h5>Example 1</h5>
+    <pre class="pre-code">
+        <code class="code">
+            function init() {
+                var name = "Mozilla"; // name is a local variable created by init
+                function displayName() {
+                // displayName() is the inner function, that forms a closure
+                console.log(name); // use variable declared in the parent function
+                }
+                displayName();
+            }
+            init(); // "Mozilla"
+        </code>
+    </pre>
+    <h5>Example 2</h5>
+    <pre class="pre-code">
+        <code class="code">
+            function initNew() {
+                var name = "Mozilla"; // name is a local variable created by init
+                function displayName() {
+                // displayName() is the inner function, that forms a closure
+                console.log(name); // use variable declared in the parent function
+                }
+                name = "Nane"
+                displayName();
+            }
+            initNew(); // "Nane"
+        </code>
+    </pre>
+    <h5>Example 3</h5>
+    <pre class="pre-code">
+        <code class="code">
+            function sum(a){
+                let c = 5;
+                return function (b){
+                    return a+b+c
+                }
+            }
+    
+            let innerFn = sum(2);
+            console.log(innerFn(8)) // inner function remember the outer scope(a,c). Output - 15
+        </code>
+    </pre>
+    <h5>Example 4</h5>
+    <pre class="pre-code">
+        <code class="code">
+            function sum(a,b,c){
+                return {
+                    sumTwoNo(){
+                        return a+b;
+                    },
+                    sumThreeNo(){
+                        return a+b+c;
+                    }
+                }
+            }
+
+            let inner = sum(1,2,3);
+            console.log(inner.sumTwoNo()); // 3
+            console.log(inner.sumThreeNo()); // 6
+        </code>
+    </pre>
+</body>
+</html>

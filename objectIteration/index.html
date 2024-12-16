@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Iteration</title>
+    <style>
+        .code{
+            color: #0c4ecd;
+            font-size: large;
+            font-style: italic;
+        }
+        .pre-code{
+            background: #dfd5d5;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+        .pre-result{
+            background: #8fdf6f;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+        .result{
+            color: #0d880d;
+            font-size: large;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">Back</a>
+    <h2>Object Iteration</h2>
+    <p>Access the properties of object by for loop</p>
+    <p><strong>Before ES6 it was the way of iteration object</strong></p>
+    <pre class="pre-code">
+        <code class="code">
+            let employee = { id: 1001, name: 'John', age: 32}
+
+            for(let key in employee){
+                console.log(key, ":", employee[key]);
+            }
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            id : 1001
+            name : John
+            age : 32
+        </code>
+    </pre>
+    <p><strong>After ES6 we can iterate object by using multiple ways</strong></p>
+    <p>First we will convert object into array using: </p>
+    <p><strong>Object.keys() - </strong> This methos creates an array that contains all the keys</p>
+    <p><strong>Object.values() - </strong> This methos creates an array that contains values for every key</p>
+    <p><strong>Object.entries() - </strong> This methos creates an array of arrays</p>
+    <p>Example : <strong>[ [key,value], [key,value], ...[key,value] ]</strong> </p>
+    <pre class="pre-code">
+        <code class="code">
+            let employee = { id: 1001, name: 'John', age: 32}
+
+            console.log("Object iteration using Object.keys")
+            Object.keys(employee).forEach((key) => {
+                console.log(key, ":", employee[key]);
+            });
+
+            console.log("Object iteration using Object.values")
+            Object.values(employee).forEach((values) => {
+                console.log("Values of emp object are", values);
+            });
+
+            console.log("Object iteration using Object.entries")
+            Object.entries(employee).forEach((arr) => {
+                console.log(arr[0], "----", arr[1]);
+            });
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            Object iteration using Object.keys
+            id : 1001
+            name : John
+            age : 32
+            Object iteration using Object.values
+            Values of emp object are 1001
+            Values of emp object are John
+            Values of emp object are 32
+            Object iteration using Object.entries
+            id ---- 1001
+            name ---- John
+            age ---- 32
+        </code>
+    </pre>
+</body>
+<script>
+    
+    let employee = { id: 1001, name: 'John', age: 32}
+
+    console.log("Object iteration using Object.keys")
+    Object.keys(employee).forEach((key) => {
+        console.log(key, ":", employee[key]);
+    });
+
+    console.log("Object iteration using Object.values")
+    Object.values(employee).forEach((values) => {
+        console.log("Values of emp object are", values);
+    });
+
+    console.log("Object iteration using Object.entries")
+    Object.entries(employee).forEach((arr) => {
+        console.log(arr[0], "----", arr[1]);
+    });
+
+</script>
+</html>

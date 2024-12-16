@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback</title>
+    <style>
+        .code{
+            color: #0c4ecd;
+            font-size: large;
+            font-style: italic;
+        }
+        .pre-code{
+            background: #dfd5d5;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+        .pre-result{
+            background: #8fdf6f;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+        .result{
+            color: #0d880d;
+            font-size: large;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">Back</a>
+    <h2>Class and Static Keyword</h2>
+    <p>Create object using class </p>
+    <p>Javascript classes can also have static methods</p>
+    <p>Static methods can be created using <strong>static</strong> keyword</p>
+    <pre class="pre-code">
+        <code class="code">
+            class Employee{
+                constructor(empId, empName, empAge){
+                    this.id = empId;
+                    this.name = empName;
+                    this.age = empAge;
+                }
+        
+                swipeIn(){
+                    console.log('Employee id',this.id,' has swiped in at', new Date().toDateString());
+                }
+        
+                static code(){
+                    console.log('Employee is coding..')
+                }
+            }
+        
+            let empObj = new Employee(102, "John", 30);
+            console.log('Id -',empObj.id);
+            console.log('Name -',empObj['name']);
+        
+            empObj.swipeIn();
+        
+            // Call static method directly by class name
+            Employee.code();
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            Id - 102
+            Name - John
+            Employee id 102  has swiped in at Tue Dec 10 2024
+            Employee is coding..
+        </code>
+    </pre>
+    <h2>Class Inheritance</h2>
+    <p>Create a sub-class using the <strong>extends</strong> keyword</p>
+    <p>Access the <strong>inherited properties</strong> and <strong>methods</strong> from child class</p>
+    <p>Use <strong>super</strong> keyword to call parent class properties</p>
+    <pre class="pre-code">
+        <code class="code">
+            class PartTimeEmployee extends Employee{
+        
+                constructor(empid, empname, empage, contractPeriod){
+                    super(empid, empname, empage);
+                    this.contractPeriod = contractPeriod;
+                }
+        
+                swipeIn(){
+                    console.log('Contract Employee Swiped In');
+                    super.swipeIn();
+                }
+        
+            }
+        
+            let partTimeEmpObj = new PartTimeEmployee(101, "Sam", 29, 3)
+        
+            PartTimeEmployee.code();
+            partTimeEmpObj.swipeIn();
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            Employee is coding..
+            Contract Employee Swiped In
+            Employee id 102  has swiped in at Tue Dec 10 2024
+        </code>
+    </pre>
+</body>
+<script>
+    class Employee{
+        constructor(empId, empName, empAge){
+            this.id = empId;
+            this.name = empName;
+            this.age = empAge;
+        }
+
+        swipeIn(){
+            console.log('Employee id',this.id,' has swiped in at', new Date().toDateString());
+        }
+
+        static code(){
+            console.log('Employee is coding..')
+        }
+    }
+
+    let empObj = new Employee(102, "John", 30);
+    console.log('Id -',empObj.id);
+    console.log('Name -',empObj['name']);
+
+    empObj.swipeIn();
+
+    // Call static method directly by class name
+    Employee.code();
+
+    class PartTimeEmployee extends Employee{
+
+        constructor(empid, empname, empage, contractPeriod){
+            super(empid, empname, empage);
+            this.contractPeriod = contractPeriod;
+        }
+
+        swipeIn(){
+            console.log('Contract Employee Swiped In');
+            super.swipeIn();
+        }
+
+    }
+
+    let partTimeEmpObj = new PartTimeEmployee(101, "Sam", 29, 3)
+
+    PartTimeEmployee.code();
+    partTimeEmpObj.swipeIn();
+
+</script>
+</html>

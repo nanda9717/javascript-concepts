@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling</title>
+    <style>
+        .code{
+            color: #0c4ecd;
+            font-size: large;
+            font-style: italic;
+        }
+        .pre-code{
+            background: #dfd5d5;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+        .pre-result{
+            background: #8fdf6f;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+        .result{
+            color: #0d880d;
+            font-size: large;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">Back</a>
+    <h2>Error Handling and Error object</h2>
+    <h3>Try and Catch</h3>
+    <p>The <span style="color: red">try</span> statement defines a code block to run (to try).</p>
+    <p>The <span style="color: red">catch</span> statement defines a code block to handle any error.</p>
+    <p><span style="color: red">Error</span> of different type can be handled differently inside the <span style="color: #0d880d;">catch</span> block</p>
+    <p><strong>Build-in error objects</strong></p>
+    <p>
+        - Eval error <br/>
+        - Internal error <br/>
+        - Range error <br/>
+        - Reference error <br/>
+        - Syntax error <br/>
+        - Type error <br/>
+        - URI error
+    </p>
+    <h3>Syntax</h3>
+    <pre class="pre-code">
+        <code class="code">
+            try {
+                Block of code to try
+              }
+              catch(err) {
+                Block of code to handle errors
+              }
+        </code>
+    </pre>
+    <pre class="pre-code">
+        <code class="code">
+            function demo(){
+                try{
+                    let bike = newbike;
+                }catch(error){
+                    if(error instanceof ReferenceError){
+                        console.log("Reference Error occured : ", error.message);
+                    }else if(error instanceof TypeError){
+                        console.log("Type Error occured : ",error.message)
+                    }else{
+                        console.log("Some Error occured : ",error.message)
+                    }
+                }
+            }
+        
+            demo();
+            console.log("Test")
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            Reference Error occured :  newbike is not defined
+            Test
+        </code>
+    </pre>
+    <h3>Finally and Throw</h3>
+    <p>The <span style="color: red">finally</span> statement lets you execute code, after try and catch, regardless of the result.</p>
+    <p>The <span style="color: red">throw</span> statement defines a custom error.</p>
+    <h3>Syntax</h3>
+    <pre class="pre-code">
+        <code class="code">
+            try {
+                Block of code to try
+            }
+            catch(err) {
+                Block of code to handle errors
+            }
+            finally {
+                Block of code to be executed regardless of the try / catch result
+            }
+        </code>
+    </pre>
+    <pre class="pre-code">
+        <code class="code">
+            function demo(){
+                try{
+                    let bike = null;
+                    if(bike === null){
+                        throw new Error("Bike can not be empty");
+                    }
+                }catch(error){
+                    if(error instanceof ReferenceError){
+                        console.log("Reference Error occured : ", error.message);
+                    }else if(error instanceof TypeError){
+                        console.log("Type Error occured : ",error.message)
+                    }else{
+                        console.log("Some Error occured : ",error.message)
+                    }
+                }finally{
+                    console.log("Finally...")
+                }
+            }
+        
+            demo();
+            console.log("Test");
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            Some Error occured :  Bike can not be empty
+            Finally...
+            Test
+        </code>
+    </pre>
+</body>
+<script>
+    
+    function demo(){
+        try{
+            let bike = null;
+            if(bike === null){
+                throw new Error("Bike can not be empty");
+            }
+        }catch(error){
+            if(error instanceof ReferenceError){
+                console.log("Reference Error occured : ", error.message);
+            }else if(error instanceof TypeError){
+                console.log("Type Error occured : ",error.message)
+            }else{
+                console.log("Some Error occured : ",error.message)
+            }
+        }finally{
+            console.log("Finally...")
+        }
+    }
+
+    demo();
+    console.log("Test");
+
+    
+
+
+</script>
+</html>

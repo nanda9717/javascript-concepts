@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous Execution</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <a href="/">Back</a>
+    <h2>Asynchronous</h2>
+    <h3>Callback</h3>
+    <p>It is a function that is executed after another function has completed its execution.</p>
+    <pre class="pre-code">
+        <code class="code">
+            console.log("============ Without Callback==========");
+            function j1(){
+                setTimeout(()=>{
+                    console.log('job1');
+                },2000)
+            }        
+            function j2(){
+                console.log('job2')
+            }
+
+            j1();
+            j2();
+
+            function job1(callback){
+                setTimeout(()=>{
+                    console.log("================== With Callback============")
+                    console.log('job1');
+                    callback();
+                },2000)
+            }
+
+            function job2(){
+                console.log('job2')
+            }
+
+            job1(job2);
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            ============ Without Callback==========
+            job2
+            job1
+            ================== With Callback============
+            job1
+            job2
+        </code>
+    </pre>
+    <h3>Promises</h3>
+    <p>It may produce a single value sometime in future.</p>
+    <p>
+        <span>resolved - </span>once the promise is successfully kept.<br/>
+        <span>rejected - </span>once the promise is failed.<br/>
+        <span>pending - </span>till it either resolves or gets rejected.
+    </p>
+    <p>To get the data which was sent as a parameter during the promise resolution we need to use the <span style="color:rgb(206, 41, 41);">.then()</span> method.</p>
+    <p>To get the data which was passed while rejecting the promise we can use <span style="color:rgb(206, 41, 41);">.catch()</span> method.</p>
+
+    <pre class="pre-code">
+        <code class="code">
+            // Promises
+            function getTrip(location){
+                return new Promise((resolve, reject)=>{
+                    if(location === "Paris"){
+                        resolve("Let's take a trip to "+ location);
+                    }else{
+                        reject(new Error("Invalid Location"));
+                    }
+                })
+            }
+
+            getTrip("Paris").then((success)=>{
+                console.log(success);
+            }).catch((error)=>{
+                console.log(error.message);
+            });
+
+            // Promises Chaining
+            function bookFlight(airline){
+                return new Promise((resolve, reject) => {
+                    if(airline === "AirIndia"){
+                        setTimeout(()=>{
+                            resolve(5600);
+                        },2000)
+                    }else{
+                        reject(Error("Flight can not be booked"))
+                    }
+                })
+            }
+
+            function bookHotel(flightPrice){
+                return new Promise((resolve)=>{
+                    setTimeout(()=>{
+                        resolve(7000+flightPrice)
+                    }, 1000)
+                })
+            }
+
+            bookFlight("AirIndia")
+                .then((flightData)=>{
+                    console.log("Flight Cost : "+flightData)
+                    return bookHotel(flightData);
+                })
+                .then((totalData) => {
+                    console.log("Total is : " + totalData)
+                })
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            Let's take a trip to Paris
+            Flight Cost : 5600
+            Total is : 12600
+        </code>
+    </pre>
+    <h3>Async Await</h3>
+    <p>Whenever there is an <span style="color: red">await</span> keyword the code will wait for the promise to be resolved.</p>
+    <p><span style="color: red;">await</span> keyword can be used only inside the <span style="color: red;">async</span></p>
+    <pre class="pre-code">
+        <code class="code">
+            function bookFlight(airline){
+                return new Promise((resolve, reject) => {
+                    if(airline === "AirIndia"){
+                        setTimeout(()=>{
+                            resolve(5600);
+                        },2000)
+                    }else{
+                        reject(Error("Flight can not be booked"))
+                    }
+                })
+            }
+        
+            function bookHotel(flightPrice){
+                return new Promise((resolve)=>{
+                    setTimeout(()=>{
+                        resolve(7000+flightPrice)
+                    }, 1000)
+                })
+            }
+
+            async function totalCost(){
+                let flightCost = await bookFlight("AirIndia");
+                let totalCost = await bookHotel(flightCost);
+                console.log("Total Cost is : "+totalCost)
+            }
+        
+            totalCost();
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            Total Cost is : 12600
+        </code>
+    </pre>
+</body>
+<script>
+
+    console.log("============ Without Callback==========");
+    function j1(){
+        setTimeout(()=>{
+            console.log('job1');
+        },2000)
+    }        
+    function j2(){
+        console.log('job2')
+    }
+
+    j1();
+    j2();
+
+    function job1(callback){
+        setTimeout(()=>{
+            console.log("================== With Callback============")
+            console.log('job1');
+            callback();
+        },2000)
+    }
+
+    function job2(){
+        console.log('job2')
+    }
+
+    job1(job2);
+
+    // Promises
+    function getTrip(location){
+        return new Promise((resolve, reject)=>{
+            if(location === "Paris"){
+                resolve("Let's take a trip to "+ location);
+            }else{
+                reject(new Error("Invalid Location"));
+            }
+        })
+    }
+
+    getTrip("Paris").then((success)=>{
+        console.log(success);
+    }).catch((error)=>{
+        console.log(error.message);
+    });
+
+    // Promises Chaining
+    function bookFlight(airline){
+        return new Promise((resolve, reject) => {
+            if(airline === "AirIndia"){
+                setTimeout(()=>{
+                    resolve(5600);
+                },2000)
+            }else{
+                reject(Error("Flight can not be booked"))
+            }
+        })
+    }
+
+    function bookHotel(flightPrice){
+        return new Promise((resolve)=>{
+            setTimeout(()=>{
+                resolve(7000+flightPrice)
+            }, 1000)
+        })
+    }
+
+    bookFlight("AirIndia")
+        .then((flightData)=>{
+            console.log("Flight Cost : "+flightData)
+            return bookHotel(flightData);
+        })
+        .then((totalData) => {
+            console.log("Total is : " + totalData)
+        })
+
+    async function totalCost(){
+        let flightCost = await bookFlight("AirIndia");
+        let totalCost = await bookHotel(flightCost);
+        console.log("Total Cost is : "+totalCost)
+    }
+
+    totalCost();
+
+</script>
+</html>

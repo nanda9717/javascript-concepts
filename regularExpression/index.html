@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regular Expression</title>
+    <style>
+        .code{
+            color: #0c4ecd;
+            font-size: large;
+            font-style: italic;
+        }
+        .pre-code{
+            background: #dfd5d5;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+        .pre-result{
+            background: #8fdf6f;
+            border-radius: 25px;
+            border: 1px solid #796f6f;
+        }
+        .result{
+            color: #0d880d;
+            font-size: large;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">Back</a>
+    <h2>Regular Expression(RegEx)</h2>
+    <p>The RegExp object can be constructed using either of the two ways<br/>
+        - using RegExp constructor (<b style="color: #0c4ecd;">let pattern = new RegExp(pattern, modifiers)</b>) <br/>
+        - as a literal value by enclosing within forward-slash(/) ( <b style="color: #0c4ecd;">let pattern = /pattern/modifiers </b>);
+    </p>
+    <p><b>Meta Characters</b> are ones which has special meaning regEx.</p>
+    <p><b>Quantifiers </b> indicates the frequency of the character that can be matched using regEx.<br/>
+        Some quantifiers are +(one or more), *(zero or more), ?.</p>
+    <p>
+        <b>Create RegExp for email validation :</b><br/>
+    - <b>Valid Email -</b> username@email.com <i style="font-weight:600; color: #e00b0b;">username@email.com</i> <br/>
+    - <b>Diffrent Email -</b> test@email.com <i style="font-weight:600; color: #e00b0b;">[a-z]@email.com(It will match only one character)</i> => <i style="font-weight:600; color: #e00b0b;">[a-z]+@email.com</i><br/>
+    - <b>Different Domain -</b> demo@mail.com <i style="font-weight:600; color: #e00b0b;">[a-z]+@[a-z]+.com</i><br/>
+    - <b>Numbers in Email -</b> test123@email.com <i style="font-weight:600; color: #e00b0b;">[a-z0-9]+@[a-z]+.com</i><br/>
+    - <b>Underscore in email</b> - test_123@email.com <i style="font-weight:600; color: #e00b0b;">[a-z0-9_]+@[a-z]+.com</i><br/>
+    - <b>.in in last -</b> test12@email.in <i style="font-weight:600; color: #e00b0b;">[a-z0-9_]+@[a-z]+.(com|in)</i><br/>
+    - <b>When adding $ in place of @ -</b> its invalid email but its showing valid email - test$mail.com - <i style="font-weight:600; color: #e00b0b;">[a-z0-9_]+@[a-z]+\.(com|in)</i><br/>
+    - <b>Invalid Id (starts with special character) -</b> !abc@mail.com - <i style="font-weight:600; color: #e00b0b;">^[a-z0-9_]+@[a-z]+\.(com|in)</i><br/>
+    - <b>Ends with coma(have extra 'a') -</b> abc@mail.coma - <i style="font-weight:600; color: #e00b0b;">^[a-z0-9_]+@[a-z]+\.(com|in)$</i><br/>
+    - <b>Include Capital alphabets -</b><i style="font-weight:600; color: #e00b0b;">^[a-zA-Z0-9_]+@[a-z]+\.(com|in)$</i><br/>
+    - <b>Replace by word meta character -</b><i style="font-weight:600; color: #e00b0b;">^[\w]+@[a-z]+\.(com|in)$</i>
+
+
+    
+    </p>
+    <p><strong style="color: #e00b0b;">exec() - </strong>If pattern matched it returns array otherwise null.</p>
+    <p><strong style="color: #e00b0b;">test() - </strong>If pattern matched it returns true otherwise false.</p>
+    <p><strong style="color: #e00b0b;">search() - </strong>match string btn RegEx and String.</p>
+    <p><strong style="color: #e00b0b;">match() - </strong>match RegEx in given string.</p>
+    <p><strong style="color: #e00b0b;">replace() - </strong>find and replace the matched string with new substring</p>
+    <pre class="pre-code">
+        <code class="code">
+            let regEx1 = new RegExp(/^[\w]+@[a-z]+\.(com|in)$/, "i");
+   
+            console.log(" RegExp- exec() method",regEx1.exec('username@gmail.com'), regEx1.exec('!username@gmail.com'));
+            console.log("RegExp - test() method", regEx1.test('username@gmail.com'), regEx1.test('usernamegmail.com'));
+
+            let regEx2 = /^[\w]+@[a-z]+\.(com|in)$/;
+        
+            console.log("exec() method",regEx2.exec('username@gmail.com'), regEx2.exec('!username@gmail.com'));
+            console.log("test() method", regEx2.test('username@gmail.com'), regEx2.test('usernamegmail.com'));
+
+
+            let str = "HelloWorld";
+            console.log("search() method", str.search(/ello/), str.search(/Well/))
+            console.log("match() method", str.match(/oWo/), str.match(/Hi/));
+
+            // It will replace only first occurence
+            console.log("replace() method", str.replace(/l/,'o'));
+
+            // To replace all the occurences we need to specify flag 'g'
+            console.log("Replace all occurences", str.replace(/l/g,'o'))
+
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            RegExp- exec() method : (2)['username@gmail.com', 'com', index: 0, input: 'username@gmail.com', groups: undefined] null
+            RegExp - test() method : true false
+            exec() method : (2)['username@gmail.com', 'com', index: 0, input: 'username@gmail.com', groups: undefined] null
+            test() method : true false
+            search() method : 1 -1
+            match() method : ['oWo', index: 4, input: 'HelloWorld', groups: undefined] null
+            replace() method : HeoloWorld
+            Replace all occurences : HeoooWorod
+        </code>
+    </pre>
+    
+</body>
+<script>
+    
+    let regEx1 = new RegExp(/^[\w]+@[a-z]+\.(com|in)$/, "i");
+   
+    console.log(" RegExp- exec() method : ",regEx1.exec('username@gmail.com'), regEx1.exec('!username@gmail.com'));
+    console.log("RegExp - test() method : ", regEx1.test('username@gmail.com'), regEx1.test('usernamegmail.com'));
+
+    let regEx2 = /^[\w]+@[a-z]+\.(com|in)$/;
+   
+    console.log("exec() method : ",regEx2.exec('username@gmail.com'), regEx2.exec('!username@gmail.com'));
+    console.log("test() method : ", regEx2.test('username@gmail.com'), regEx2.test('usernamegmail.com'));
+
+
+    let str = "HelloWorld";
+    console.log("search() method : ", str.search(/ello/), str.search(/Well/))
+    console.log("match() method : ", str.match(/oWo/), str.match(/Hi/));
+
+    // It will replace only first occurence
+    console.log("replace() method : ", str.replace(/l/,'o'));
+
+    // To replace all the occurences we need to specify flag 'g'
+    console.log("Replace all occurences : ", str.replace(/l/g,'o'))
+
+</script>
+</html>

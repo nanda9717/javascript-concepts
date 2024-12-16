@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification API</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="./notification.js"></script>
+</head>
+<body>
+    <a href="/">Back</a>
+    <h2>Notification API</h2>
+    <button onclick="notifyMe()">Notify Me</button>
+    <pre class="pre-code">
+        <code class="code">
+            function notifyMe(){
+                alert("About to notify!");
+                // Ask for permission
+                Notification.requestPermission()
+                    .then((userPermission)=>{
+                        if(userPermission === 'default'){
+                            alert("Please provide permission.");
+                        }else if(userPermission === 'denied'){
+                            alert("You denied the permission.")
+                        }else{
+                            new Notification('New mail', {body: 'You have a new mail'});
+                        }
+                        console.log(userPermission);
+                    });
+            }
+        </code>
+    </pre>
+</body>
+</html>
