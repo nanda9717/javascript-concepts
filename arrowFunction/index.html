@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arrow Function</title>
+    <link rel="stylesheet" href="../styles.css">
     <style>
         .code{
             color: #0c4ecd;
@@ -44,5 +45,71 @@
             var arrowMultiplyBy2 = num => num * 2;
         </code>
     </pre>
+    <pre class="pre-code">
+        <code class="code">
+            function Student(num){
+                this.NoOfStudents = 45;  // The reference to 
+                this points to the Student object itself
+                console.log(this);
+                setTimeout(function addStudent(){
+                    this.NoOfStudents += num; // The reference to 
+                    this changed to window objecr and hence can not 
+                    access NoOfStudents variable of Student object
+                    console.log(this.NoOfStudents);
+                },1000)
+            }
+            var s = new Student(21);
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            Student {NoOfStudents: 45}
+            NaN
+        </code>
+    </pre>
+    <pre class="pre-code">
+        <code class="code">
+            function Student2(num){
+                this.NoOfStudents = 45; // this here refers to 
+                the same student object and hence can access and 
+                update the NoOfStudents variable
+                console.log(this);
+                setTimeout(()=>{
+                    this.NoOfStudents += num;
+                    console.log(this.NoOfStudents);
+                },1000)
+            }
+            var s2 = new Student2(21);
+        </code>
+    </pre>
+    <h3>Output</h3>
+    <pre class="pre-result">
+        <code class="result">
+            Student {NoOfStudents: 45}
+            66
+        </code>
+    </pre>
 </body>
+<script>
+    function Student(num){
+        this.NoOfStudents = 45;  // The reference to this points to the Student object itself
+        console.log(this);
+        setTimeout(function addStudent(){
+            this.NoOfStudents += num; // The reference to this changed to window objecr and hence can not access NoOfStudents variable of Student object
+            console.log(this.NoOfStudents);
+        },1000)
+    }
+    var s = new Student(21);
+
+    function Student2(num){
+        this.NoOfStudents = 45; // this here refers to the same student object and hence can access and update the NoOfStudents variable
+        console.log(this);
+        setTimeout(()=>{
+            this.NoOfStudents += num;
+            console.log(this.NoOfStudents);
+        },1000)
+    }
+    var s2 = new Student2(21);
+</script>
 </html>
