@@ -41,6 +41,741 @@
 
     // Question - 3
 
+    let a = [];
+    let b = [];
+    console.log(a==b);
+    console.log(a===b);
+
+    //Output -
+
+    // false
+    // false
+
+    // When compare two arrays actually it compares memory location and memroy location can't same of two arrays so its giving false
+
+    // Question - 4
+
+    let a2 = [];
+    let b2 = a2;
+    console.log(a2==b2);
+    console.log(a2===b2);
+
+    //Output -
+
+    // true
+    // true
+
+    // Question - 5
+
+    let a3 = [20];
+    let b3 = [20];
+    console.log(a3[0]== b3[0]);
+    console.log(a3[0] === b3[0]);
+
+    //Output -
+
+    // true
+    // true
+
+    // Question - 6
+
+    let z = [1,2,3,4];
+
+    let y = { name: "Anil"}
+
+    console.log(...z);
+
+    //Output -
+
+    // 1 2 3 4
+
+    // Question - 7
+
+    console.log(typeof NaN);
+    console.log(typeof null);
+
+    //Output -
+
+    // number
+    // object
+
+    // Question - 8
+
+    let data = 10 - -10;
+    console.log(data);
+
+    //Output -
+
+    // number
+    // object
+
+    // Question - 9
+
+    let set = new Set([1, 1, 2, 3, 4]);
+    console.log(set);
+
+    //Output -
+
+    // Set(4) {1, 2, 3, 4}
+
+    // Question - 10
+
+    let obj = {name: "Anil"}
+    console.log(delete obj.name); 
     
+    //Output -
+
+    // true
+
+    // Question - 11
+
+    let obj2 = {name: "Anil"}
+    console.log(delete obj2); 
+    
+    //Output -
+
+    // true
+
+    // We can delete only property of any object not object
+
+    // Question - 12
+
+    let arr = ["Peter", "Anil", "Sam"];
+    let [x] = arr;
+    let [,x1] = arr;
+    let [,,x11] = arr;
+    let [x2,y2] = arr;
+    let [x3,,z3] = arr;
+    console.log(x);
+    console.log(x1);
+    console.log(x11);
+    console.log(x2,y2);
+    console.log(x3,z3);
+    
+    //Output -
+
+    // Peter
+    // Peter, Anil
+    // Peter, Sam
+
+    // Question - 13
+
+    let obj3 = { name: 'Anil', age: 20, skill: 'JS'}
+    const {name, age} = obj3;
+    console.log(name, age);
+    
+    //Output -
+
+    // Anil 20
+
+    // Question - 14
+    // Merge two objects
+    let obj4 = { name: 'Anil', age: 20, skill: 'JS'}
+    let obj5 = {city: "Noida", email: "anil@test.com"}
+    let newObj = { ...obj4, ...obj5};
+    console.log(newObj);
+    
+    //Output -
+
+    // {name: 'Anil', age: 20, skill: 'JS', city: 'Noida', email: 'anil@test.com'}
+
+    // Question - 15
+
+    let obj6 = { name: 'Anil', age: 20, skill: 'JS'}
+    let obj7 = {city: "Noida", email: "anil@test.com"}
+    let newObj1 = { obj6, ...obj7};
+    console.log(newObj1);
+    
+    //Output -
+
+    // {
+    // "obj6": {
+    //     "name": "Anil",
+    //     "age": 20,
+    //     "skill": "JS"
+    // },
+    // "city": "Noida",
+    // "email": "anil@test.com"
+    // }
+
+    // Question - 16
+
+    let obj_4 = { name: 'Anil', age: 20, skill: 'JS'}
+    let obj_5 = {city: "Noida", skill: "PHP"}
+    let newObj_1 = { ...obj_4, ...obj_5};
+    console.log(newObj_1);
+    
+    //Output -
+
+    // {name: 'Anil', age: 20, skill: 'PHP', city: 'Noida'}
+
+    // Question - 17
+
+    //const name2 = "Anil"
+    //console.log(name2());
+    
+    //Output -
+
+    // Uncaught TypeError: name2 is not a function
+
+    // Question - 18
+
+    const res = false || {} || null;
+    console.log(res); 
+    
+    //Output -
+
+    // {}
+
+    // It will display first positive value
+
+    // Question - 19
+
+    const res2 = null || false || '';
+    console.log(res2); 
+    
+    //Output -
+
+    // ''
+
+    // If it does not find any positive value then it will return last value.
+
+    // Question - 20
+
+    const res3 = [] || 0 || true;
+    console.log(res3); 
+    
+    //Output -
+
+    // []
+
+    // As black object blank array also is true value
+
+    // Question - 21
+
+    console.log(Promise.resolve(5));
+    
+    //Output -
+
+    // Promise {<fulfilled>: 5}
+
+    // Question - 22
+
+    // let name2 = "Nane";
+
+    // function getName(){
+    //     console.log(name2);
+    //     let name2 = "Nanda";
+    // }
+    // getName();
+    
+    //Output -
+
+    // Uncaught ReferenceError: Cannot access 'name2' before initialization
+
+    // Question - 23
+
+    let name3 = "Nane";
+
+    function getName(){
+        console.log(name3);
+    }
+    getName();
+    
+    //Output -
+
+    // Nane
+
+    // Question - 24
+
+    console.log(`${(x => x)('I love')} to program`);
+    
+    //Output -
+    
+    // I love to program
+
+    // Question - 25
+
+    function sumValues(x,y,z){
+        return x + y + z;
+    }
+
+    console.log(sumValues(...[1,2,3]));
+    
+    //Output -
+    
+    // 6
+
+    // Question - 26
+
+    const str = 'code by nane';
+    console.log(typeof str, !typeof str);
+    console.log(typeof str === 'object');
+    console.log(typeof str === 'string');
+    console.log(!typeof str === 'object');
+    console.log(!typeof str === 'string');
+    console.log(!typeof str === false);
+    
+    //Output -
+    
+    // string false
+    // false
+    // true
+    // false
+    // false
+    // true
+
+    // Question - 27
+
+    let n = 'Subscribe';
+    let ag = 21;
+
+    console.log(isNaN(n), '==');
+    console.log(isNaN(ag), '-==')
+    
+    //Output -
+    
+    // true
+    // false
+
+    // Question - 28
+
+    let person = { name: "Nanda"}
+    // What can modify person object
+    Object.seal(person); // After seal we can not add any new property in object.
+    //person.age = 25; // Without seal it will work
+    person.name = "John"
+    console.log(person);
+
+    //Output -
+    
+    // {name: 'John'}
+
+    // Question - 29
+
+    let arrNew = [15, 5, 12, 20];
+    // remove first element
+    console.log(arrNew);
+    console.log(arrNew.shift());
+    console.log(arrNew);
+    // remove last element
+    console.log(arrNew.pop());
+    console.log(arrNew);
+    // add new element in start.
+    console.log(arrNew.unshift(26));
+    console.log(arrNew);
+    // add new element in end.
+    console.log(arrNew.push(40));
+    console.log(arrNew);
+
+    // Question - 30
+
+    let number = 31;
+
+    if(number % 2 === 0){
+        console.log(`${number} is even`)
+    }else{
+        console.log(`${number} is odd`);
+    }
+
+    // Output
+
+    // 31 is odd
+
+    // Question - 31
+
+    let ob = {
+        name: "Nanda",
+        age: 23
+    }
+
+    delete ob.name;
+    console.log(ob);
+
+    // Output
+
+    // {age: 23}
+
+    // Question - 32
+    // Convert data to boolean false value
+    let data3 = "true";
+    console.log(typeof data3); // string
+    console.log(typeof !data3, !data3); // boolean  false
+
+    // Question - 33
+    // Convert data to boolean true value
+    let data4 = "true";
+    console.log(typeof data3); // string
+    console.log(typeof !!data3, !!data4); // boolean  true
+
+    // Question - 34
+    // diffrence bt map and forEach
+    // 1 - map returns something but forEach does not return anything 
+    
+    // Question - 35
+    let fruits = ["Apple", "Mango", "Grapes"];
+    delete fruits[1];
+    console.log(fruits, fruits.length); // (3) ['Apple', empty, 'Grapes'] 3
+
+    // Question - 36
+    let arr1 = [1, 2, 3];
+    let arr2 = [4, 5, 6];
+    let arr3 = [...arr1, ...arr2]
+    console.log(arr3); // (6) [1, 2, 3, 4, 5, 6]
+
+    // Question - 37
+    let c = 3 * 3
+    console.log(c);
+    let d = 3 ** 3;
+    console.log(d)
+
+    // Question - 38
+    let num = 2;
+    setTimeout(()=>{
+        console.log(num)
+    },0);
+    num = 100;
+
+    // Output
+
+    // 100
+
+    // Explaination - While executing the code Javascript creates a stack and put these type of functions(setTimeOut or setInterval) in last and runs rest of code first.
+
+    
+    // Question - 38
+    
+    let xx = 1;
+    let yy = 2;
+    console.log((--yy === xx));  // true
+
+    // Question - 39
+    let n1 = 1;
+    let n2 = 1;
+    let n3 = 2
+    console.log((n1 === n2 === --n3));  // false
+
+    // Question - 40
+    console.log(3*3);  // 9
+    console.log(3**3);  // 27
+    // console.log(3***3);  // Error
+
+    // Question - 41
+    console.log(v);
+    var v; // undefined
+
+    // Question - 42
+    //console.log(m);  // Uncaught ReferenceError: m is not defined
+
+    // Question - 43
+    function fruit(){
+        console.log(name); // undefined
+        //console.log(price);  // Uncaught ReferenceError: Cannot access 'price' before initialization
+
+        var name = "apple";
+        let price = 20;
+    }
+    fruit();
+
+    // Question - 44
+    function sum(a, b){
+        return a + b;
+    }
+    console.log(sum(1,"2"));
+
+    // Output
+
+    // 12
+
+    // Question - 45
+    let numNew = 0;
+    console.log(numNew++);    // 0
+    console.log(++numNew);    // 2
+    console.log(numNew);      // 2
+
+    // Question - 46
+    function getAge(...args){
+        console.log(typeof args, args)
+    }
+    getAge(24);
+    
+    // Output
+
+    // object  [24]
+
+    // Question - 47
+    function getAge2(){
+        //'use strict';
+        myAge = 21;
+        console.log(myAge);
+    }
+    getAge2();
+    
+    // Output - Uncaught ReferenceError: myAge is not defined
+
+    // Question - 48
+    const sumN = eval("10*10+5");
+    console.log(sumN); // 105
+
+     // Question - 49
+     const objNew = { a: "One", b:"Two", a:"Repeat"}
+     console.log(objNew);
+
+     // Output -
+
+     // {a: 'Repeat', b: 'Two'}
+
+    // Question - 50
+    for(let i = 1; i < 5; i++){
+        if(i === 3) continue;
+        console.log(i);
+    }
+
+    // Output - 
+    // 1
+    // 2
+    // 4
+
+
+    // Question - 51
+
+    for(let i = 1; i < 5; i++){
+        if(i === 3) break;
+        console.log(i);
+    }
+
+    // Output -
+    // 1
+    // 2
+
+    // Question - 52
+
+    const foo = () => console.log("First");
+    const bar = () => setTimeout(()=> console.log("Second"));
+    const baz = () => console.log("Third");
+
+    bar();
+    foo();
+    baz();
+
+    // Output
+    // First 
+    // Third
+    // Second
+
+    // Question - 53
+    const personNew = { name: 'Anil' };
+
+    function sayHi(age){
+        return `${this.name} is ${age}`;
+    }
+
+    console.log(sayHi.call(personNew, 21));    // Anil is 21 
+    console.log(sayHi.bind(personNew, 21));    // returning function
+    console.log(sayHi.bind(personNew, 21)());    // Anil is 21
+
+    // Question - 54
+    function sayHiNew(){
+        return (() => 0)();
+    }
+
+    console.log(typeof sayHiNew());
+
+    // Question 55
+    function sayHiNew2(){
+        return () => 0;
+    }
+
+    console.log(typeof sayHiNew2(), typeof sayHiNew2()());
+
+    // Output -
+
+    // function  number
+
+    // Question 56
+    console.log(typeof 1);     // number
+    console.log(typeof typeof 1);    // string
+
+    // Question 57
+    const numbers = [1, 2, 3];
+    numbers[6] = 23;
+    console.log(numbers, numbers.length, numbers[4], numbers[6]); 
+    
+    
+    // Output
+    // (7) [1, 2, 3, empty × 3, 23] 7 undefined 23
+
+    // Question 58
+    console.log(!!null)   // false
+    console.log(!!"")    // false
+    console.log(!!1)     // true
+
+    // Question 59
+    let string = "Nanda";
+    console.log([...string]);
+
+    // Output
+    // (5) ['N', 'a', 'n', 'd', 'a']
+
+    // Question 60
+
+    const firstPromise = new Promise((res, rej) => {
+        setTimeout(res, 500, "One");
+    })
+
+    const secongPromise = new Promise((res, rej) => {
+        setTimeout(res, 100, "Two");
+    })
+
+    Promise.race([firstPromise, secongPromise]).then(res => console.log(res));
+
+    // Output will be display in output which promise first resolved.
+
+    // Question 61
+    let personObj = { name: 'Peter'};
+    const numArr = [personObj];
+    personObj = null;
+    console.log(numArr); // [{name: 'Peter'}]
+    
+    // Question 62
+    const personDetails = {
+        name: "John Doe",
+        age: 26
+    }
+
+    for (const item in personDetails){
+        console.log(item);
+    }
+
+    // Output
+    // name
+    // age
+
+    // Question 63
+    let num1 = 3 + 4 + '5';
+    console.log(num1, typeof num1);    // 75  string
+
+    // Question 64
+    console.log(typeof 3 + 4 + '5');  //   number45
+
+    // Because code excutes left to right so typeof 3 gives number and then will add 45 as string
+
+    // Question 65
+    console.log((3 + 4 + +'5'), typeof (3 + 4 + +'5'));        // 12 number
+
+    //Question 66
+    console.log(([] == []));  // false
+
+    // Question 67
+    let check = [1,2,3].map(num => {
+                    if(typeof num === 'number') return;
+                    return num*2;
+                });
+    console.log(check);  // (3) [undefined, undefined, undefined]
+
+    // Question 68
+    function getInfo(number){
+        number.name = "John";
+    }
+
+    const personInfo = { name: "Narendra" };
+    
+    getInfo(personInfo);
+
+    console.log(personInfo);    //  {name: 'John'}
+
+    // Question 69
+    function Car(){
+        this.make = "Tata";
+        return { make: "Kia"}
+    }
+
+    const myCar = new Car();
+    console.log(myCar.make);    // Kia
+
+    // Question 70
+    (()=>{
+        let xv = (yv = 10);
+    })()
+
+    console.log(typeof xv);   // undefined
+    //console.log(xv);   // Uncaught ReferenceError: xv is not defined
+
+    // Question 71
+    (()=>{
+        let x3 = y3 = 10;
+    })()
+
+    console.log(y3, typeof y3);  // 10  number
+
+    // Question 72
+    (()=>{
+        let x5 = 10;
+    })();
+
+    (()=>{
+        let x5 = 20;
+    })();
+
+    console.log(typeof x5);  // undefined
+
+    // Quesuin 73
+    (()=>{
+        let x6 = y6 = 10;
+    })();
+
+    (()=>{
+        let x6 = y6 = 20;
+    })();
+
+    console.log(typeof y6, y6);
+
+    // Question 74
+    let x7 = 100;
+    (()=>{
+        var x7 = 20;
+    })()
+    console.log(x7);   // 100
+
+
+    // QUestion 75
+     console.log(!true - true);    // -1
+
+    // QUestion 76
+    console.log(true + +"10");    //11
+
+    // Question 77
+    console.log((0.1+0.2) == 0.3);  // false
+    console.log((0.1+0.2));     // 0.30000000000000004
+
+    // Question 77
+
+    // Reverse Number -
+    let num10 = 23412;
+    let revArr = [...num10+'']
+    let reverse = revArr.reverse().join('')
+    console.log("Reverse Num = ",reverse);  // Reverse Num =  23412
+
+    // Reverse String -
+    let st = 'Narendra';
+    let revStr = st.split('').reverse().join('');
+    console.log("Rev Str = ",revStr) // Rev Str =  ardneraN
+
+    // Break Camel Case String -
+    let str2 = 'myNaneIsNanda';
+    let newStr = str2.replace(/([a-z])([A-Z])/g, '$1 $2'); //my Nane Is Nanda
+    let count = newStr.split(' ').length;
+    console.log("Break Camel = ", count, newStr.split(' ')) // Break Camel =  4  (4) ['my', 'Nane', 'Is', 'Nanda']
+
+    const str3 = 'Nanda';
+    function test(){
+        let str3 = "Nane";
+        setTimeout(function(){
+            console.log(str3);
+        },2000)
+    }
+    test(); // Nane
+
+
 </script>
 </html>
