@@ -92,6 +92,25 @@
             age ---- 32
         </code>
     </pre>
+    <p><b>Freeze the object -</b> We can not add new property and modify existing property.</p>
+    <p><b>Seal the object - </b> Modifying an existing property is allowed but Adding new properties is not allowed</p>
+    <pre class="pre-code">
+        <code class="code">
+            const userObj = {
+                name: 'Nane',
+                email: 'nane@yopmail.com',
+                age: 30
+            }
+        
+            Object.seal(userObj);
+            // Object.freeze(userObj);
+        
+            userObj.name = 'Nanda';
+            userObj.isActive = true;
+        
+            console.log('==userObj==',userObj)
+        </code>
+    </pre>
 </body>
 <script>
     
@@ -111,6 +130,20 @@
     Object.entries(employee).forEach((arr) => {
         console.log(arr[0], "----", arr[1]);
     });
+
+    const userObj = {
+        name: 'Nane',
+        email: 'nane@yopmail.com',
+        age: 30
+    }
+
+    Object.seal(userObj);
+    // Object.freeze(userObj);
+
+    userObj.name = 'Nanda';
+    userObj.isActive = true;
+
+    console.log('==userObj==',userObj)
 
 </script>
 </html>

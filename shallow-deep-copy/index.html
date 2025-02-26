@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <title>Shallow and Deep Copy</title>
+</head>
+<body>
+    <div>
+        <h2>Shallow and Deep Copy</h2>
+        <p><b>Problem : 1 - </b>If we copy any object in new variable then it copy the location(reference) of object</p>
+        <p>so because of that if we change any value of user2 object then user1 object also getting change</p>
+        <b>Example -</b>
+        <pre>
+            const user1 = {
+                firstname: 'Nane',
+                lastname: 'Singh'
+            }
+        
+            const user2 = user1;
+        
+            user2.lastname = 'Kumar';
+        
+            console.log(user1, user2);
+        </pre>
+        <b>To fix this problem we will use Shallow Copy</b>
+        <p>Shallow Copy - Only the top-level properties are copied.</p>
+        <b>Solution - 1</b>
+        <pre>
+            const user1 = {
+                firstname: 'Nane',
+                lastname: 'Singh'
+            }
+        
+            const user2 = Object.assign({}, user1);
+        
+            user2.lastname = 'Kumar';
+        
+            console.log(user1, user2);
+        </pre>
+        <b>Solution - 2 - Latest ES6</b>
+        <pre>
+            const user1 = {
+                firstname: 'Nane',
+                lastname: 'Singh'
+            }
+        
+            const user2 = {...user1}
+        
+            user2.lastname = 'Kumar';
+        
+            console.log(user1, user2);
+        </pre>
+        <p><b>Problem : 2 -</b> If we have nested properties in oject the shallow copy will not work then we will use deep copy</p>
+        <pre>
+            const user1 = {
+                firstname: 'Nane',
+                lastname: 'Singh',
+                address: {
+                    city: 'Noida',
+                    state: 'UP'
+                }
+            }
+        
+            const user2 = {...user1};
+        
+            user2.address.city = 'Aligarh';
+        
+            console.log(user1, user2);
+        </pre>
+        <p>Deep Copy - creates a completely independent copy of the object, including all nested objects or arrays.</p>
+        <pre>
+            const user1 = {
+                firstname: 'Nane',
+                lastname: 'Singh',
+                address: {
+                    city: 'Noida',
+                    state: 'UP'
+                }
+            }
+
+            const user2 = JSON.parse(JSON.stringify(user1));
+
+            user2.address.city = 'Aligarh';
+
+            console.log(user1, user2);
+        </pre>
+        <p><b>Problem : 3 -</b> Deep copy has some limitations. If we have any function or date in object then it will not work.</p>
+        <pre>
+            const user1 = {
+                firstname: 'Nane',
+                lastname: 'Singh',
+                address: {
+                    city: 'Noida',
+                    state: 'UP'
+                },
+                getData: function(){
+                    return "All data here.."
+                }
+            }
+        
+            const user2 = JSON.parse(JSON.stringify(user1));
+        
+            user2.address.city = 'Aligarh';
+        
+            console.log(user1, user2);
+        </pre>
+        <b>To solve this we will use lodash npm package</b>
+        <pre>
+            const user1 = {
+                firstname: 'Nane',
+                lastname: 'Singh',
+                address: {
+                    city: 'Noida',
+                    state: 'UP'
+                },
+                getData: function(){
+                    return "All data here.."
+                }
+            }
+        
+            const user2 = _.cloneDeep(user1);
+        
+            user2.address.city = 'Aligarh';
+        
+            console.log(user1, user2);
+        </pre>
+    </div>
+</body>
+<script>
+
+    // In javascript when we copy an object or array then we copy the location.
+    // const fruits = ['Mango','Apple','Grapes'];
+
+    // const myFruits = fruits;
+
+    // console.log(myFruits);
+
+    // myFruits.push("Banana");
+    // myFruits.push("Guava");
+
+    // console.log(myFruits, fruits);
+
+    const fruits = ['Mango','Apple','Grapes'];
+
+    const myFruits = [...fruits];
+    //const myFruits = Object.assign([],fruits);
+    //const myFruits = [].concat(fruits);
+
+    console.log(myFruits);
+
+    myFruits.push("Banana");
+    myFruits.push("Guava");
+
+    console.log(myFruits, fruits);
+
+    // Problem - 1
+
+    // const user1 = {
+    //     firstname: 'Nane',
+    //     lastname: 'Singh'
+    // }
+
+    // const user2 = user1;
+
+    // user2.lastname = 'Kumar';
+
+    // console.log(user1, user2);
+
+    // Solutions - 
+
+    // Shallow Copy - Only the top-level properties are copied
+
+    // Example - 1
+    // const user1 = {
+    //     firstname: 'Nane',
+    //     lastname: 'Singh'
+    // }
+
+    // const user2 = Object.assign({}, user1);
+
+    // user2.lastname = 'Kumar';
+
+    // console.log(user1, user2);
+
+    // Example - 2
+
+    // const user1 = {
+    //     firstname: 'Nane',
+    //     lastname: 'Singh'
+    // }
+
+    // const user2 = {...user1}
+
+    // user2.lastname = 'Kumar';
+
+    // console.log(user1, user2);
+
+    // Problem - 2
+
+    // const user1 = {
+    //     firstname: 'Nane',
+    //     lastname: 'Singh',
+    //     address: {
+    //         city: 'Noida',
+    //         state: 'UP'
+    //     }
+    // }
+
+    // const user2 = {...user1};
+
+    // user2.address.city = 'Aligarh';
+
+    // console.log(user1, user2);
+
+    // Solution
+
+    // Deep Copy - creates a completely independent copy of the object, including all nested objects or arrays.
+    
+    // Example - 1
+
+    // const user1 = {
+    //     firstname: 'Nane',
+    //     lastname: 'Singh',
+    //     address: {
+    //         city: 'Noida',
+    //         state: 'UP'
+    //     }
+    // }
+
+    // const user2 = JSON.parse(JSON.stringify(user1));
+
+    // user2.address.city = 'Aligarh';
+
+    // console.log(user1, user2);
+
+    // Deep copy has some limitations. If we have any function or date in object then it will not work.
+
+    // const user1 = {
+    //     firstname: 'Nane',
+    //     lastname: 'Singh',
+    //     address: {
+    //         city: 'Noida',
+    //         state: 'UP'
+    //     },
+    //     getData: function(){
+    //         return "All data here.."
+    //     }
+    // }
+
+    // const user2 = JSON.parse(JSON.stringify(user1));
+
+    // user2.address.city = 'Aligarh';
+
+    // console.log(user1, user2);
+
+    // To solve this we will use lodash npm package
+
+    const user1 = {
+        firstname: 'Nane',
+        lastname: 'Singh',
+        address: {
+            city: 'Noida',
+            state: 'UP'
+        },
+        getData: function(){
+            return "All data here.."
+        }
+    }
+
+    const user2 = _.cloneDeep(user1);
+
+    user2.address.city = 'Aligarh';
+
+    console.log(user1, user2);
+
+</script>
+</html>
